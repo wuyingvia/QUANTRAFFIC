@@ -18,8 +18,8 @@ Adaptive Modeling of Uncertainties for Traffic Forecasting
 
 ## Introduction
 
-QUANTRAFFIC is a generic framework for quantifying the prediction uncertainties of DNN-based traffic forecasting models. Given a certain level of confidence, the QUANTRAFFIC
-framework computes a PI that defines a range of possible values within which the real data (e.g., traffic time, flow, or speed) is likely to fall.
+QUANTRAFFIC is a generic framework for quantifying the prediction uncertainties of DNN-based traffic forecasting models. Given a certain confidence level, the QUANTRAFFIC
+framework computes a PI that defines a range of possible values within which the real data (e.g., traffic time, flow, or speed) will likely fall.
 
 ## Installation Dependencies
 - Ubuntu 18.04.5
@@ -40,7 +40,7 @@ For METR-LA, and PeMS-BAY, thanks to [DCRNN](https://github.com/liyaguang/DCRNN)
 
 For PeMSD7(M), thanks to [STGCN](https://github.com/VeritasYin/STGCN_IJCAI-18).
 
-For PeMS03/04/07/08, thakns to [ASTGNN](https://github.com/guoshnBJTU/ASTGNN)
+For PeMS03/04/07/08, thanks to [ASTGNN](https://github.com/guoshnBJTU/ASTGNN)
 
 ## Basic model
 - GraphWaveNet
