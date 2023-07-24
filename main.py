@@ -5,7 +5,7 @@ import shutil
 import torch
 from datetime import datetime
 import time
-from lib.Utils import load_data, inverse_transform, transform
+from lib.Utils import load_data, inverse_transform, transform, load_adj
 from src.GraphWaveNet import *
 from Param import *
 

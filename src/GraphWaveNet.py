@@ -1,20 +1,11 @@
 '''
 GraphWaveNet.py
 '''
-import sys
-import math
 import torch
 import torch.nn as nn
-import torch.nn.init as init
 import torch.nn.functional as F
-from torch.autograd import Variable
-import scipy.sparse as sp
-from scipy.sparse.linalg import eigs
 import numpy as np
 import pandas as pd
-import torchbnn
-from lib.Utils import load_pickle
-
 
 class nconv(nn.Module):
     def __init__(self):
@@ -216,59 +207,7 @@ class gwnet(nn.Module):
         out = out.view([-1, x.size(1), x.size(2), x.size(3),2])
         return out
 
-def sym_adj(adj):
-    """Symmetrically normalize adjacency matrix."""
-    adj = sp.coo_matrix(adj)
-    rowsum = np.array(adj.sum(1))
-    d_inv_sqrt = np.power(rowsum, -0.5).flatten()
-    d_inv_sqrt[np.isinf(d_inv_sqrt)] = 0.
-    d_mat_inv_sqrt = sp.diags(d_inv_sqrt)
-    return adj.dot(d_mat_inv_sqrt).transpose().dot(d_mat_inv_sqrt).astype(np.float32).todense()
 
-def asym_adj(adj):
-    adj = sp.coo_matrix(adj)
-    rowsum = np.array(adj.sum(1)).flatten()
-    d_inv = np.power(rowsum, -1).flatten()
-    d_inv[np.isinf(d_inv)] = 0.
-    d_mat = sp.diags(d_inv)
-    return d_mat.dot(adj).astype(np.float32).todense()
-
-def calculate_normalized_laplacian(adj):
-    """
-    # L = D^-1/2 (D-A) D^-1/2 = I - D^-1/2 A D^-1/2
-    # D = diag(A 1)
-    :param adj:
-    :return:
-    """
-    adj = sp.coo_matrix(adj)
-    d = np.array(adj.sum(1))
-    d_inv_sqrt = np.power(d, -0.5).flatten()
-    d_inv_sqrt[np.isinf(d_inv_sqrt)] = 0.
-    d_mat_inv_sqrt = sp.diags(d_inv_sqrt)
-    normalized_laplacian = sp.eye(adj.shape[0]) - adj.dot(d_mat_inv_sqrt).transpose().dot(d_mat_inv_sqrt).tocoo()
-    return normalized_laplacian
-
-def calculate_scaled_laplacian(adj_mx, lambda_max=2, undirected=True):
-    if undirected:
-        adj_mx = np.maximum.reduce([adj_mx, adj_mx.T])
-    L = calculate_normalized_laplacian(adj_mx)
-    if lambda_max is None:
-        lambda_max, _ = linalg.eigsh(L, 1, which='LM')
-        lambda_max = lambda_max[0]
-    L = sp.csr_matrix(L)
-    M, _ = L.shape
-    I = sp.identity(M, format='csr', dtype=L.dtype)
-    L = (2 / lambda_max * L) - I
-    return L.astype(np.float32).todense()
-
-def weight_matrix(file):
-    adj_mx = pd.read_csv(file).values
-    distances = adj_mx[~np.isinf(adj_mx)].flatten()
-    std = distances.std()
-    adj_mx = np.exp(-np.square(adj_mx / std))
-    return adj_mx
-
-def load_adj(ADJPATH, adjtype, DATANAME):
 #**************
 #change adj input
 #     sensor_ids, sensor_id_to_ind, adj_mx = load_pickle(pkl_filename)
