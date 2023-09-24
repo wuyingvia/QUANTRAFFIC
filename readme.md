@@ -50,4 +50,6 @@ For PeMS03/04/07/08, thanks to [ASTGNN](https://github.com/guoshnBJTU/ASTGNN)
 
 所以算了，屎山虽然屎，但好歹能跑【撒花
 
+新版本应该会在春节前后更新【拖延本上第一条todo
+
 有啥想法请邮箱联系wuyingvia@outlook.com, 欢迎交流～
