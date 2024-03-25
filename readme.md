@@ -6,14 +6,14 @@ Adaptive Modeling of Uncertainties for Traffic Forecasting
 # Cite
 
 ​```
-@misc{wu2023adaptive,
-      title={Adaptive Modeling of Uncertainties for Traffic Forecasting}, 
-      author={Ying Wu and Yongchao Ye and Adnan Zeb and James J. Q. Yu and Zheng Wang},
-      year={2023},
-      eprint={2303.09273},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
-}
+@ARTICLE{10304591,
+  author={Wu, Ying and Ye, Yongchao and Zeb, Adnan and Yu, James Jianqiao and Wang, Zheng},
+  journal={IEEE Transactions on Intelligent Transportation Systems}, 
+  title={Adaptive Modeling of Uncertainties for Traffic Forecasting}, 
+  year={2023},
+  pages={1-16},
+  doi={10.1109/TITS.2023.3327100}}
+
 ​```
 
 ## Introduction
@@ -26,7 +26,7 @@ framework computes a PI that defines a range of possible values within which the
 - Python 3 (>= 3.6)
 - PyTorch version 1.8.0.
 - Pandas
-- 
+
 ## Public data
 - METR-LA
 - PeMS-BAY
@@ -46,10 +46,10 @@ For PeMS03/04/07/08, thanks to [ASTGNN](https://github.com/guoshnBJTU/ASTGNN)
 - GraphWaveNet
 
 ## note
-我知道这个代码很屎，没事，可以喷的~我曾尝试过重写，但是跑不出结果..【泪目
+我知道这个代码很屎，没事，可以喷的~..【泪目
 
 所以算了，屎山虽然屎，但好歹能跑【撒花
 
-新版本应该会在春节前后更新【拖延本上第一条todo
+新版本应该会在春节前后更新【拖延本上第一条todo 
 
 有啥想法请邮箱联系wuyingvia@outlook.com, 欢迎交流～
